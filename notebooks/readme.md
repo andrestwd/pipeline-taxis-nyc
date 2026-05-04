@@ -35,7 +35,25 @@ indicadores de negocio:
 ---
 
 ## Estructura del proyecto
-![image_1777866875737.png](./image_1777866875737.png "image_1777866875737.png")
+```
+pipeline-taxis-nyc/
+├── notebooks/
+│   ├── 00_setup_catalogo.py     # crea el catálogo y schemas en Unity Catalog
+│   ├── 01_ingesta_raw.py        # descarga y persiste los datos en capa Raw
+│   ├── 02_limpieza_trusted.py   # limpieza, validación y enriquecimiento
+│   ├── 03_kpis_refined.py       # generación de los tres KPIs de negocio
+│   ├── 04_calidad_datos.py      # reporte formal de calidad de datos
+│   └── 05_reporte_ejecucion.py  # reporte JSON del pipeline completo
+├── docs/
+│   ├── cdes.md                  # elementos críticos de datos documentados
+│   └── glosario.md              # glosario de términos de negocio
+├── lineaje/
+│   └── diagrama_lineaje.md      # diagrama Mermaid del flujo de datos
+├── reportes/
+│   └── reporte_ejecucion.json   # reporte de ejecución del pipeline
+└── README.md
+```
+
 
 ---
 
