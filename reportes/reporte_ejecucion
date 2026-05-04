@@ -1,0 +1,62 @@
+{
+    "pipeline": "NYC Yellow Taxi — Arquitectura Medallion",
+    "fecha_reporte": "2026-05-04 03:32",
+    "fuente": "TLC Trip Record Data — Enero 2023",
+    "capas": {
+        "raw": {
+            "tabla_viajes": "nyc_taxi_andres.raw.viajes_enero_2023",
+            "tabla_zonas": "nyc_taxi_andres.raw.zonas_taxi",
+            "total_viajes": 3066766,
+            "total_zonas": 265
+        },
+        "trusted": {
+            "tabla": "nyc_taxi_andres.trusted.viajes_limpios",
+            "viajes_entrada": 3066766,
+            "viajes_descartados": 71503,
+            "pct_descartado": 2.33,
+            "viajes_validos": 2995263,
+            "detalle_descartados": {
+                "tiempo_invalido": 1121,
+                "sin_distancia": 44814,
+                "tarifa_invalida": 22522,
+                "outliers_extremos": 3046,
+                "nulos_columnas_clave": 0
+            }
+        },
+        "refined": {
+            "tablas_generadas": [
+                "kpi_demanda_temporal",
+                "kpi_top10_zonas_rentables",
+                "kpi_calidad_datos",
+                "reporte_calidad_datos"
+            ],
+            "kpi_demanda_temporal": {
+                "franja_con_mas_viajes": "4_tarde",
+                "dia_con_mas_viajes": "Tuesday",
+                "cantidad_viajes_pico": 146470
+            },
+            "kpi_zonas_rentables": {
+                "zona_top": "Arden Heights",
+                "barrio_top": "Staten Island",
+                "ingreso_promedio_top": 90.28
+            },
+            "kpi_calidad_datos": {
+                "ingresos_datos_limpios": 81866688.68,
+                "ingresos_datos_crudos": 82865192.22,
+                "diferencia_ingresos": 998503.54,
+                "pct_impacto_en_ingresos": 1.2
+            }
+        }
+    },
+    "gobierno": {
+        "catalogo": "nyc_taxi_andres",
+        "schemas": [
+            "raw",
+            "trusted",
+            "refined"
+        ],
+        "cdes_documentados": 3,
+        "terminos_glosario": 5,
+        "reglas_calidad": 4
+    }
+}
